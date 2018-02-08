@@ -1,7 +1,3 @@
-variable "auth_token" {
-  description = "token to use for redis auth"
-}
-
 variable "namespace" {
   default = "global"
 }
