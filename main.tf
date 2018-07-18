@@ -98,7 +98,7 @@ resource "aws_cloudwatch_metric_alarm" "cache_memory" {
   depends_on    = ["aws_elasticache_replication_group.default"]
 }
 
-# module "dns" {
+module "dns" {
   source    = "git::https://github.com/cloudposse/terraform-aws-route53-cluster-hostname.git?ref=tags/0.2.1"
   enabled   = "${var.enabled}"
   namespace = "${var.namespace}"
@@ -108,4 +108,3 @@ resource "aws_cloudwatch_metric_alarm" "cache_memory" {
   zone_id   = "${var.zone_id}"
   records   = ["${aws_elasticache_replication_group.default.*.primary_endpoint_address}"]
 }
-

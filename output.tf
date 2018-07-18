@@ -10,7 +10,6 @@ output "port" {
   value = "${var.port}"
 }
 
-# output "host" {
-#   value = "${module.dns.hostname}"
-# }
-
+output "host" {
+  value = "${module.dns.hostname}"
+}
