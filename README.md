@@ -2,7 +2,6 @@
 
 Terraform module to provision an [`ElastiCache`](https://aws.amazon.com/elasticache/) Redis Cluster
 
-
 ## Usage
 
 Include this repository as a module in your existing terraform code:
@@ -31,46 +30,44 @@ module "example_redis" {
 }
 ```
 
+## Inputs
 
-## Input
+| Name | Description | Type | Default | Required |
+|------|-------------|:----:|:-----:|:-----:|
+| alarm_actions |  | list | `<list>` | no |
+| alarm_cpu_threshold_percent |  | string | `75` | no |
+| alarm_memory_threshold_bytes |  | string | `10000000` | no |
+| apply_immediately |  | string | `true` | no |
+| attributes |  | list | `<list>` | no |
+| automatic_failover |  | string | `false` | no |
+| availability_zones |  | list | - | yes |
+| cluster_size |  | string | `1` | no |
+| delimiter |  | string | `-` | no |
+| enabled | Set to false to prevent the module from creating any resources | string | `true` | no |
+| engine_version |  | string | `3.2.4` | no |
+| family |  | string | `redis3.2` | no |
+| instance_type |  | string | `cache.t2.micro` | no |
+| maintenance_window |  | string | `wed:03:00-wed:04:00` | no |
+| name |  | string | `redis` | no |
+| namespace |  | string | `global` | no |
+| notification_topic_arn |  | string | `` | no |
+| port |  | string | `6379` | no |
+| security_groups |  | list | - | yes |
+| stage |  | string | `default` | no |
+| subnets |  | list | `<list>` | no |
+| tags |  | map | `<map>` | no |
+| vpc_id |  | string | `` | no |
+| zone_id |  | string | - | yes |
 
-|  Name                        |  Default            |  Description                                                    |
-|:-----------------------------|:-------------------:|:----------------------------------------------------------------|
-| enabled                      | true                | Set to false to prevent the module from creating any resources  |
-| namespace                    | global              | Namespace                                                       |
-| stage                        | default             | Stage                                                           |
-| name                         | redis               | Name                                                            |
-| security_groups              | []                  | AWS security group ids                                          |
-| vpc_id                       | __REQUIRED__        | AWS VPC id                                                      |
-| subnets                      | []                  | AWS subnet ids                                                  |
-| cluster_size                 | 1                   | Count of nodes in cluster                                       |
-| instance_type                | cache.t2.micro      | Elastic cache instance type                                     |
-| family                       | redis3.2            | Redis family                                                    |
-| engine_version               | 3.2.4               | Redis engine version                                            |
-| port                         | 6379                | Redis port                                                      |
-| maintenance_window           | wed:03:00-wed:04:00 | Maintenance window                                              |
-| notification_topic_arn       |                     | Notification topic arn                                          |
-| alarm_cpu_threshold_percent  | 75                  | CPU threshold alarm level                                       |
-| alarm_memory_threshold_bytes | 10000000            | Ram threshold alarm level                                       |
-| alarm_actions                | []                  | Alarm action list                                               |
-| apply_immediately            | true                | Apply changes immediately                                       |
-| automatic_failover           | false               | Automatic failover (Not available for T1/T2 instances)          |
-| availability_zones           | []                  | Availability zone ids                                           |
-| zone_id                      | false               | Route53 DNS Zone id                                             |
-| attributes                   | []                  | Additional attributes (_e.g._ "1")                              |
-| tags                         | {}                  | Additional tags (_e.g._ map("BusinessUnit","ABC")               |
-| delimiter                    | -                   | Delimiter between `name`, `namespace`, `stage` and `attributes` |
+## Outputs
 
-
-## Output
-
-| Name              | Description       |
-|:------------------|:------------------|
-| id                | Redis cluster id  |
-| security_group_id | Security group id |
-| host              | Redis host        |
-| port              | Redis port        |
-
+| Name | Description |
+|------|-------------|
+| host |  |
+| id |  |
+| port |  |
+| primary_endpoint_address |  |
+| security_group_id |  |
 
 ## License
 
